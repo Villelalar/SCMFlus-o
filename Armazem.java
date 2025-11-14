@@ -1,7 +1,6 @@
-
 package model;
 
-public class Armazem extends Cidade {
+public class Armazem {
 
     public static final int TAM_NOME_ARMAZEM = 80;
     public static final int TAM_ENDERECO = 150;
@@ -10,9 +9,7 @@ public class Armazem extends Cidade {
     private String nome_armazem;
     private String endereco;
 
-    public Armazem(int id_pais, String nome_pais, int id_cidade, String nome_cidade, 
-                   int id_armazem, String nome_armazem, String endereco) throws ModelException {
-        super(id_pais, nome_pais, id_cidade, nome_cidade);
+    public Armazem(int id_armazem, String nome_armazem, String endereco) throws ModelException {
         setId_armazem(id_armazem);
         setNome_armazem(nome_armazem);
         setEndereco(endereco);
@@ -50,7 +47,7 @@ public class Armazem extends Cidade {
 
     @Override
     public String toString() {
-        return id_armazem + " - " + nome_armazem + " | " + endereco + " (" + super.toString() + ")";
+        return id_armazem + " - " + nome_armazem + " | " + endereco;
     }
 
     // Validações

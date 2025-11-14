@@ -1,16 +1,17 @@
 package model;
 
-public class Cidade extends Pais {
+public class Cidade {
 
     public static final int TAM_NOME_CIDADE = 60;
 
     private int id_cidade;
     private String nome_cidade;
+    private int fk_id_pais;  // Foreign Key para Pais
 
-    public Cidade(int id_pais, String nome_pais, int id_cidade, String nome_cidade) throws ModelException {
-        super(id_pais, nome_pais);
+    public Cidade(int id_cidade, String nome_cidade, int fk_id_pais) throws ModelException {
         setId_cidade(id_cidade);
         setNome_cidade(nome_cidade);
+        setFk_id_pais(fk_id_pais);
     }
 
     // ID Cidade
@@ -33,9 +34,19 @@ public class Cidade extends Pais {
         this.nome_cidade = nome_cidade;
     }
 
+    // FK Pais
+    public int getFk_id_pais() {
+        return fk_id_pais;
+    }
+
+    public void setFk_id_pais(int fk_id_pais) throws ModelException {
+        Pais.validarId(fk_id_pais);
+        this.fk_id_pais = fk_id_pais;
+    }
+
     @Override
     public String toString() {
-        return id_cidade + " - " + nome_cidade + " (" + super.toString() + ")";
+        return id_cidade + " - " + nome_cidade + " (FK Pais: " + fk_id_pais + ")";
     }
 
     // Validações
